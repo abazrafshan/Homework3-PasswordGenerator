@@ -9,6 +9,7 @@ function writePassword() {
   passwordText.value = password;
 
 }
+
 var passwordLength;
 var passwordArray = [];
 var availableOptions = [];
@@ -93,6 +94,22 @@ function letsBegin() {
           if (symbol === true) {
               availableOptions.push(symbolArray);
               console.log(availableOptions)
+          }
+          generatePassword();
+          else {
+              alert("There must be SOME character types you want to include in your password. Let's try this again");
+              letsBegin();
+          }
+          function generatePassword() {
+            for (i = 0; i < passwordLength; i++){
+                var randomCharacterIndex = Math.floor(Math.random() * availableOptions.length);
+                passwordArray.push(availableOptions[randomCharacterIndex]);
+                console.log(passwordArray);
+                writePassword();
+            }
+            function writePassword();
+                //Display each character of passwordArray on password generator
+
           }
       }
 
