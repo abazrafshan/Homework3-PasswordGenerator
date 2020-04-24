@@ -39,7 +39,7 @@ function userPreference(){
   var lowerCase = confirm("Do you want to include lowercase letters in your password?");
   var number = confirm("Do you want to include numbers in your password?");
   var symbol = confirm("Do you want to include symbols in your password?");
-  // An array of characters that will be available for use in the generation of the password is created based on the user's preferences
+  // A 2D array of characters that will be available for use in the generation of the password is created based on the user's preferences
   if (upperCase) {
     availableOptions.push(upperCaseArray);
     console.log (availableOptions);
@@ -57,15 +57,17 @@ function userPreference(){
     console.log(availableOptions);
     
   }
-  // If user doesn't select any of the prompted conditions to be true
+  // If user doesn't select any of the prompted conditions to be true, user is alerted of the error and program stops
   if (symbol === false && number === false && lowerCase === false && upperCase === false){
     alert("There must be SOME character types you want to include in your password. Reload page to try again!");
     return;
   }
+  // 2D array of potential characters to be used in password generation is turned into a 1D array
   OneDArr(availableOptions);
   console.log(OneDArr(availableOptions));
 }
 
+// This function contains the login for inputting a 2D array and outputting a 1D array
 function OneDArr(arr){
   for (var i = 0; i < arr.length; i++) {
     newArr = newArr.concat(arr[i])
@@ -73,11 +75,8 @@ function OneDArr(arr){
   }
 }
 
-function generatePassword(arr) 
-{
-  // availableOptions.flat();
-  // console.log(availableOptions);
-  // console.log(newArr); 
+// A character is placed at each index of the passwordArray, with only the character families chosen by the user available for password generation
+function generatePassword(arr) {
   for (var i = 0; i < passwordLength; i++){
     var randomCharacterIndex = Math.floor(Math.random() * newArr.length);
     console.log(randomCharacterIndex)
@@ -87,6 +86,7 @@ function generatePassword(arr)
   return passwordArray.join(" ");
 }
 
+// When this function is activated, it begins the entire process of password generation from the point after the user determines the number of characters they want the password to be
 function start() {
   letsBegin();
   writePassword();
