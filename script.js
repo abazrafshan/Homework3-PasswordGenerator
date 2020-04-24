@@ -30,8 +30,8 @@ function letsBegin() {
     userPreference();
   }
   else {
-    alert("Please choose a number between 8 and 128");
-    letsBegin();
+    alert("Please choose a number between 8 and 128; reload the page to try again");
+    return;
   }
 }
 
@@ -61,32 +61,6 @@ function userPreference(){
     alert("There must be SOME character types you want to include in your password. Reload page to try again!");
     return;
   }
-  OneDArr(availableOptions);
-  console.log(OneDArr(availableOptions));
-}
-
-function createAvailableOptions() {
-  if (upperCase) {
-    availableOptions.push(upperCaseArray);
-    console.log (availableOptions);
-  }
-  if (lowerCase) {
-    availableOptions.push(lowerCaseArray);
-    console.log(availableOptions)
-  }
-  if (number){ 
-    availableOptions.push(numberArray);
-    console.log(availableOptions);
-  }
-  if (symbol) {
-    availableOptions.push(symbolArray);
-    console.log(availableOptions);
-    
-  }
-  // else {
-  //   alert("There must be SOME character types you want to include in your password. Try again!");
-  //   return;
-  // }
   OneDArr(availableOptions);
   console.log(OneDArr(availableOptions));
 }
@@ -121,7 +95,5 @@ function start() {
 return
 }
 
-
- 
 // Add event listener to generate button
 generateBtn.addEventListener("click", start);
