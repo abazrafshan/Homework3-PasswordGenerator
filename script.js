@@ -13,23 +13,21 @@ function writePassword() {
 var passwordArray = [];
 var newArr = [];
 var availableOptions = [];
-var lowerCase = true;
-var upperCase = true;
-var symbol = true;
-var number = true;
+var lowerCase;
+var upperCase;
+var symbol;
+var number;
 var upperCaseArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var lowerCaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var symbolArray = [",","!","#","$","%","&","(",")","*","+","-",".","/",":",";","<","=",">","?","@","[","]","^","_","{","|","}","~"];
 var numberArray = ["1","2","3","4","5","6","7","8","9"];
 var passwordLength = prompt("How many characters would you like your password to be? Minimum: 8 characters; Maximum; 128 characters");
 
-
-
 function letsBegin() {
-  // var passwordLength = prompt("How many characters would you like your password to be? Minimum: 8 characters; Maximum; 128 characters");
   console.log(passwordLength);
   if (Math.floor(passwordLength) >= 8 && Math.floor(passwordLength) <= 128) {
-    upperCaseFunction();
+    // upperCaseFunction();
+    userPreference();
   }
   else {
     alert("Please choose a number between 8 and 128");
@@ -37,79 +35,60 @@ function letsBegin() {
   }
 }
 
-function upperCaseFunction() {
-  var upperCase = confirm("Do you want to include uppercase letters in your password?");
-  console.log(upperCase);
-  if (upperCase){
-    //Include upper case characters in password generation  
-    lowerCaseFunction();
-  }
-  else {
-    upperCase === false;
-    lowerCaseFunction();
-  }
-}
-
-function lowerCaseFunction() {
+function userPreference(){
+  var upperCase = confirm("Do you want to include uppercase letters in your password?"); 
   var lowerCase = confirm("Do you want to include lowercase letters in your password?");
-  console.log(lowerCase);
-  if (lowerCase){
-    //include lowercase letters in password generation
-    numberFunction();
-  }
-  else {
-    lowerCase === false;
-    numberFunction();
-  }
-}
-
-function numberFunction() {
   var number = confirm("Do you want to include numbers in your password?");
-    console.log(number);
-    if (number){
-      //include numbers in password generation
-      symbolFunction();
-    }
-    else {
-      number === false;
-      symbolFunction();
-    }
-}
-
-function symbolFunction() {
   var symbol = confirm("Do you want to include symbols in your password?");
-    console.log(symbol);
-    if (symbol){
-      createAvailableOptions();
-    }
-    else {
-      symbol === false;
-      createAvailableOptions();
-    }
-}
-function createAvailableOptions() {
-  if (upperCase === true) {
+  if (upperCase) {
     availableOptions.push(upperCaseArray);
     console.log (availableOptions);
   }
-  if (lowerCase === true) {
+  if (lowerCase) {
     availableOptions.push(lowerCaseArray);
     console.log(availableOptions)
   }
-  if (number === true){ 
+  if (number){ 
     availableOptions.push(numberArray);
     console.log(availableOptions);
   }
-  if (symbol === true) {
+  if (symbol) {
     availableOptions.push(symbolArray);
     console.log(availableOptions);
-    OneDArr(availableOptions)
+    
   }
-  else {
-    alert("There must be SOME character types you want to include in your password. Try again!");
+  if (symbol === false && number === false && lowerCase === false && upperCase === false){
+    alert("There must be SOME character types you want to include in your password. Reload page to try again!");
     return;
   }
-  
+  OneDArr(availableOptions);
+  console.log(OneDArr(availableOptions));
+}
+
+function createAvailableOptions() {
+  if (upperCase) {
+    availableOptions.push(upperCaseArray);
+    console.log (availableOptions);
+  }
+  if (lowerCase) {
+    availableOptions.push(lowerCaseArray);
+    console.log(availableOptions)
+  }
+  if (number){ 
+    availableOptions.push(numberArray);
+    console.log(availableOptions);
+  }
+  if (symbol) {
+    availableOptions.push(symbolArray);
+    console.log(availableOptions);
+    
+  }
+  // else {
+  //   alert("There must be SOME character types you want to include in your password. Try again!");
+  //   return;
+  // }
+  OneDArr(availableOptions);
+  console.log(OneDArr(availableOptions));
 }
 
 function OneDArr(arr){
@@ -138,6 +117,7 @@ function start() {
   writePassword();
   passwordArray=[];
   availableOptions = [];
+  newArr = [];
 return
 }
 
