@@ -14,5 +14,10 @@ Building this project was an excellent introduction to deploying functions and a
 
 This program was created with debugging feedback from class instructor Bryan and class TA Wilson. 
 
+## Screenshot
+
+![Untitled](https://user-images.githubusercontent.com/63271368/80314242-424e4200-87a5-11ea-8893-7be0841ec340.png)
+
+
 Enjoy!
 
